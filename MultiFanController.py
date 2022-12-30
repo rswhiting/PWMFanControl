@@ -61,10 +61,10 @@ def get_temp():                              # Function to read in the CPU tempe
 
 def setup_fans(config):
     RPi.GPIO.setwarnings(False)          # Do not show any GPIO warnings
-    RPi.GPIO.setmode (IO.BCM)            # BCM pin numbers - PIN8 as ‘GPIO14’
+    RPi.GPIO.setmode (RPi.GPIO.BCM)            # BCM pin numbers - PIN8 as ‘GPIO14’
     fans = []
     for fan in config['fans']:
-        RPi.GPIO.setup(fan['gpio'], IO.OUT)      # Initialize GPIO14 as our fan output pin
+        RPi.GPIO.setup(fan['gpio'], RPi.GPIO.OUT)      # Initialize GPIO14 as our fan output pin
         fan = RPi.GPIO.PWM(fan['gpio'], fan['hz'])  # Set GPIO14 as a PWM output, with 100Hz frequency (this should match your fans specified PWM frequency)
         fan.start(0)                          # Generate a PWM signal with a 0% duty cycle (fan off)
         fans.append(fan)
