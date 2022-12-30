@@ -1,0 +1,16 @@
+config:
+  timeout_seconds: 5
+  fans:
+    - gpio: 14
+      hz: 100
+    - gpio: 15
+      hz: 100
+  # in this example, if the temp is greater than or equal to 70 celsius, the duty cycle will be set to 100%
+  temp_to_duty_cycle_thresholds:
+    0: 0
+    25: 15
+    32: 25
+    40: 50
+    50: 70
+    60: 85
+    70: 100
